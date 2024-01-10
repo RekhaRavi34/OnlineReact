@@ -79,8 +79,8 @@ function App() {
                </div>
                <button disabled={ userDetails.username.length < 0 || userDetails.password.length < 0 } 
                                   //to disable and to set cursor options when values are not entered "cursor-not-allowed"
-                       className={`${!userDetails.password || !userDetails.username ? " bg-[#bcf5d9]":"cursor-pointer bg-[#20DF7F] "}
-                                   text-base text-[#224957]
+                       className={`${!userDetails.password || !userDetails.username ? " bg-[#bcf5d9] text-[#6caec6]":"cursor-pointer bg-[#20DF7F] text-[#224957]"}
+                                   text-base 
                                    w-full 
                                    font-regular 
                                    rounded-lg 
