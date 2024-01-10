@@ -5,14 +5,16 @@ function App() {
     username:"",
     password:"",
    });
-
+   const [isSubmitted,SetIsSubmitted] = useState(false);
    function handleUserInputs(e){
     setUserDetails({
       ...userDetails,
       [e.target.name]:e.target.value,
     })
    }  
-   console.log(userDetails.username,userDetails.password);
+   
+   
+
    return (
     // In order to use justify-center or any other flex-related utility classes in Tailwind CSS, 
     // you need to apply the flex class to the container. 
@@ -54,6 +56,7 @@ function App() {
                          name="username"
                          onChange={handleUserInputs}/>
                </div>
+               {isSubmitted && !userDetails.username && <h1 className='text-red-800 text-xs'>Username is mandatory</h1>}
                <div className='mt-2'>
                   <label htmlFor="input-label" 
                          className="block 
@@ -68,20 +71,22 @@ function App() {
                          name="password"
                          onChange={handleUserInputs}/>
                </div>
+               {isSubmitted && !userDetails.password && <h1 className='text-red-800 text-xs'>Password is mandatory</h1>}
                <div className='flex justify-end mt-9'>
                <p className='text-black 
                              font-medium 
                              text-sm'>Forgot password?</p>
                </div>
                <button disabled={ userDetails.username.length < 0 || userDetails.password.length < 0 } 
-                       className={`${!userDetails.password || !userDetails.username ? "curser-not-allowed":""}
-                                   bg-[#20DF7F] 
+                                  //to disable and to set cursor options when values are not entered "cursor-not-allowed"
+                       className={`${!userDetails.password || !userDetails.username ? " bg-[#bcf5d9]":"cursor-pointer bg-[#20DF7F] "}
+                                   text-base text-[#224957]
                                    w-full 
                                    font-regular 
                                    rounded-lg 
                                    py-2 px-2 
-                                   mt-5 
-                                   text-base text-[#224957]`} >Login</button>
+                                   mt-5 `}
+                       onClick={()=>{SetIsSubmitted(true)}} >Login</button>
             </div>
           </div>
       </div>
